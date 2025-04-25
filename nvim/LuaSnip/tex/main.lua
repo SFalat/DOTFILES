@@ -105,3 +105,10 @@ ls.add_snippets("tex", {
     t "^\\top",
   }),
 })
+
+-- zi -> inverse
+ls.add_snippets("tex", {
+  s("zi", {
+    t "^{-1}",
+  }),
+})
