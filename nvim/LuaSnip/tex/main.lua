@@ -98,3 +98,10 @@ ls.add_snippets("tex", {
     t "X_1, X_2, ..., X_n",
   }),
 })
+
+-- tr -> transpose
+ls.add_snippets("tex", {
+  s("tr", {
+    t "^\\top",
+  }),
+})
