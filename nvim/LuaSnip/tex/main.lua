@@ -158,3 +158,28 @@ ls.add_snippets("tex", {
     i(1),
   }),
 })
+
+-- vec -> vector
+ls.add_snippets("tex", {
+  s("vec", {
+    t "\\underline{\\textbf{",
+    i(1),
+    t "}}",
+  }),
+})
+
+-- R -> Real numbers
+ls.add_snippets("tex", {
+  s("R", {
+    t "\\mathbb{R}",
+    i(1),
+  }),
+})
+
+-- Rd -> vector space R^d
+ls.add_snippets("tex", {
+  s("Rd", {
+    t "\\mathbb{R}^d",
+    i(1),
+  }),
+})
