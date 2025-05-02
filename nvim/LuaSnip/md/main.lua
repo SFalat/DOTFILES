@@ -31,3 +31,23 @@ ls.add_snippets("markdown", {
     i(2),
   }),
 })
+
+-- // -> comment
+ls.add_snippets("markdown", {
+  s("//", {
+    t "*// ",
+    i(1),
+    t "*",
+    i(2),
+  }),
+})
+
+-- com -> comment
+ls.add_snippets("markdown", {
+  s("com", {
+    t "*// ",
+    i(1),
+    t "*",
+    i(2),
+  }),
+})
