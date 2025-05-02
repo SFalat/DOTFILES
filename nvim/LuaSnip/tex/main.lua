@@ -112,3 +112,49 @@ ls.add_snippets("tex", {
     t "^{-1}",
   }),
 })
+
+-- pdv -> partial derivative
+ls.add_snippets("tex", {
+  s("pdv", {
+    t "\\frac{\\partial{",
+    i(1),
+    t "}}{\\partial{",
+    i(2),
+    t "}}",
+  }),
+})
+
+-- pddv -> partial double derivative
+ls.add_snippets("tex", {
+  s("pddv", {
+    t "\\frac{\\partial^2{",
+    i(1),
+    t "}}{\\partial^2{",
+    i(2),
+    t "}}",
+  }),
+})
+
+-- gr -> gradient
+ls.add_snippets("tex", {
+  s("gr", {
+    t "\\nabla",
+    i(1),
+  }),
+})
+
+-- vx -> vector x
+ls.add_snippets("tex", {
+  s("vx", {
+    t "\\textbf{x}",
+    i(1),
+  }),
+})
+
+-- vv -> vector v
+ls.add_snippets("tex", {
+  s("vv", {
+    t "\\textbf{v}",
+    i(1),
+  }),
+})

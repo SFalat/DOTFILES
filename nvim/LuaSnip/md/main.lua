@@ -27,7 +27,7 @@ ls.add_snippets("markdown", {
   s("def", {
     t "**",
     i(1),
-    t "** -> ",
+    t "** $\\rightarrow$ ",
     i(2),
   }),
 })
