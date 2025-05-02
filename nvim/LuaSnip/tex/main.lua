@@ -146,7 +146,7 @@ ls.add_snippets("tex", {
 -- vx -> vector x
 ls.add_snippets("tex", {
   s("vx", {
-    t "\\textbf{x}",
+    t "\\underline{\\textbf{x}}",
     i(1),
   }),
 })
@@ -154,7 +154,7 @@ ls.add_snippets("tex", {
 -- vv -> vector v
 ls.add_snippets("tex", {
   s("vv", {
-    t "\\textbf{v}",
+    t "\\underline{\\textbf{v}}",
     i(1),
   }),
 })
