@@ -58,17 +58,17 @@ ls.add_snippets("tex", {
   }),
 })
 
--- < -> less or equal
+-- t< -> less or equal
 ls.add_snippets("tex", {
-  s("<", {
+  s("t<", {
     t "$\\le$ ",
     i(1),
   }),
 })
 
--- > -> Grater or equal
+-- t> -> Grater or equal
 ls.add_snippets("tex", {
-  s(">", {
+  s("t>", {
     t "$\\ge$ ",
     i(1),
   }),
@@ -180,6 +180,38 @@ ls.add_snippets("tex", {
 ls.add_snippets("tex", {
   s("Rd", {
     t "\\mathbb{R}^d",
+    i(1),
+  }),
+})
+
+-- lra -> right arrow with no latex marks
+ls.add_snippets("tex", {
+  s("lra", {
+    t "\\rightarrow",
+    i(1),
+  }),
+})
+
+-- < -> less or equal
+ls.add_snippets("tex", {
+  s("<", {
+    t "\\le ",
+    i(1),
+  }),
+})
+
+-- > -> Grater or equal
+ls.add_snippets("tex", {
+  s(">", {
+    t "\\ge ",
+    i(1),
+  }),
+})
+
+-- eps -> epsilon
+ls.add_snippets("tex", {
+  s("eps", {
+    t "\\varepsilon ",
     i(1),
   }),
 })
