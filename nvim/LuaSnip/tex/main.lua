@@ -146,7 +146,7 @@ ls.add_snippets("tex", {
 -- vx -> vector x
 ls.add_snippets("tex", {
   s("vx", {
-    t "\\underline{\\textbf{x}}",
+    t "\\vec{x}",
     i(1),
   }),
 })
@@ -154,7 +154,15 @@ ls.add_snippets("tex", {
 -- vv -> vector v
 ls.add_snippets("tex", {
   s("vv", {
-    t "\\underline{\\textbf{v}}",
+    t "\\vec{v}",
+    i(1),
+  }),
+})
+
+-- vb -> vector v
+ls.add_snippets("tex", {
+  s("vb", {
+    t "\\vec{\\beta}",
     i(1),
   }),
 })
@@ -162,9 +170,9 @@ ls.add_snippets("tex", {
 -- vec -> vector
 ls.add_snippets("tex", {
   s("vec", {
-    t "\\underline{\\textbf{",
+    t "\\vec{",
     i(1),
-    t "}}",
+    t "}",
   }),
 })
 
@@ -213,5 +221,31 @@ ls.add_snippets("tex", {
   s("eps", {
     t "\\varepsilon ",
     i(1),
+  }),
+})
+
+-- vv3 -> vertical vector 3 dimensions
+ls.add_snippets("tex", {
+  s("vv3", {
+    t "\\begin{pmatrix} ",
+    i(1),
+    t " \\\\ ",
+    i(2),
+    t " \\\\ ",
+    i(3),
+    t "\\end{pmatrix}",
+  }),
+})
+
+-- hv3 -> vertical vector 3 dimensions
+ls.add_snippets("tex", {
+  s("hv3", {
+    t "\\begin{pmatrix} ",
+    i(1),
+    t " & ",
+    i(2),
+    t " & ",
+    i(3),
+    t "\\end{pmatrix}",
   }),
 })
