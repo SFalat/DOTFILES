@@ -14,6 +14,7 @@ return {
               my_ws = "~/Documents/GitHub/NOTES/PERSONAL/", -- Format: <name_of_workspace> = <path_to_workspace_root>
               my_other_notes = "~/Documents/GitHub/NOTES/",
             },
+            default_workspace = "my_ws",
             index = "index.norg", -- The name of the main (root) .norg file
           },
         },
