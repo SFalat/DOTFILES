@@ -6,7 +6,6 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.markdown-and-latex" },
-
   -- import/override with your plugins folder
+  { import = "astrocommunity.git.lazygit" },
 }

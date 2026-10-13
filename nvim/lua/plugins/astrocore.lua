@@ -8,13 +8,12 @@ return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
   opts = {
-
     -- Configure core features of AstroNvim
     features = {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
-      diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
+      diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
     },
@@ -23,16 +22,27 @@ return {
       virtual_text = true,
       underline = true,
     },
+    -- passed to `vim.filetype.add`
+    filetypes = {
+      -- see `:h vim.filetype.add` for usage
+      extension = {
+        foo = "fooscript",
+      },
+      filename = {
+        [".foorc"] = "fooscript",
+      },
+      pattern = {
+        [".*/etc/foo/.*"] = "fooscript",
+      },
+    },
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
         relativenumber = true, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
-        spell = true, -- sets vim.opt.spell
-        spelllang = "en_us,pl",
+        spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
-        shell = "/usr/bin/fish",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -40,11 +50,15 @@ return {
         -- This can be found in the `lua/lazy_setup.lua` file
       },
     },
+    -- Mappings can be configured through AstroCore as well.
     mappings = {
-      -- Normal mode
+      -- first key is the mode
       n = {
-        ["}"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        ["{"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        -- second key is the lefthand side of the map
+
+        -- navigate buffer tabs
+        ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {
@@ -55,29 +69,33 @@ return {
           end,
           desc = "Close buffer from tabline",
         },
-        ["<Leader>tt"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Terminal (Float)" },
         ["<Leader>tf"] = false,
-
-        -- tables with just a `desc` jey will be registered with which-key if it's installed
-        -- this is useful for naming menus
-        ["<Leader>b"] = { desc = "Buffers" },
-
-        ["J"] = { "10j", desc = "Jump down 10 lines" },
-        ["K"] = { "10k", desc = "Jump up 10 lines" },
-        ["L"] = { function() vim.lsp.buf.hover() end, desc = "Hover function" },
+        ["<Leader>tt"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Terminal" },
+        ["<Leader>gg"] = {
+          function()
+            local Terminal = require("toggleterm.terminal").Terminal
+            local lazygit = Terminal:new {
+              cmd = "lazygit",
+              direction = "float",
+              hidden = true,
+              close_on_exit = true,
+            }
+            lazygit:toggle()
+          end,
+          desc = "Toggle Lazygit",
+        },
       },
-      -- Edit mode
+
+      t = { -- Terminal mode mappings
+        -- Press Escape to exit Terminal input mode
+        ["jj"] = { "<C-\\><C-n>", desc = "Exit terminal mode" },
+        ["<Leader>tf"] = false,
+        ["<Leader>tt"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Terminal" },
+      },
       i = {
-        ["jj"] = { "<Esc>", desc = "Exit Inster Mode" },
-      },
-      -- Visual mode
-      v = {
-        ["J"] = { "10j", desc = "Jump down 10 lines" },
-        ["K"] = { "10k", desc = "Jump up 10 lines" },
-      },
-      -- Terminal mode
-      t = {
-        ["jj"] = { [[<C-\><C-n>]], desc = "Exit Terminal Mode" },
+        ["<Leader>tf"] = false,
+        ["<Leader>tt"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Terminal" },
+        ["jj"] = { "<Esc>" },
       },
     },
   },
